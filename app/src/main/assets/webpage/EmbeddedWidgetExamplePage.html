@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, user-scale=1">
+    <title></title>
+    <style type="text/css" rel="stylesheet">
+        .line{
+            width:100%;
+            background: #000000;
+            height: 1px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+        <p>this is a webview function demo page in assets/webpage, including HTML tag and js function</p>
+        <hr/>
+        <div style="position: absolute; left: 20px; top: 120px; height: 400px; width: 30px; background-color: #44444444;"></div>
+        <div id="tip">下面的video元素使用同层框架渲染</div>
+        <div style="width: 360px; height: 202px; overflow: hidden;">
+
+            <video width="360px" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+        </div>
+
+        <hr />
+        <p>下面的自定义标签my-canvas使用同层框架渲染</p>
+
+        <div style="width: 300px; height: 200px;">
+            <my-canvas width="100%" height="100px"></my-canvas>
+        </div>
+        <hr/>
+
+        <p>video及蓝色canvas是Android Native的同层组件，左侧灰色条为html实现，用于体现同层渲染效果</p>
+</body>
+
+
+<script type="text/javascript" >
+    function setCallBack(fn, msg) {
+        document.getElementById("funcName").innerHTML = "callBack Result: " + fn;
+        document.getElementById("callback").innerHTML = msg;
+    };
+
+    function jsAlert () {
+       alert("JavaScript alert()")
+    };
+
+    function jsConfirm() {
+       let res = confirm("JavaScript confirm()");
+       setCallBack("confirm()", res ? "confirm" : "cancel");
+    };
+
+    function jsPrompt() {
+       let res = prompt("JavaScript prompt()");
+       setCallBack("prompt()", res);
+    };
+
+    function jsOnBeforeUnload() {
+       window.onbeforeunload = function(e) {
+          return '关闭提示';
+       }
+       window.location.href = "./homePage.html";
+    };
+
+</script>
+</html>
